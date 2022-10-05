@@ -3,13 +3,7 @@ let btnRock = document.querySelector('.rock'); // rock select
 let btnPaper = document.querySelector('.paper'); // paper select
 let btnScissors = document.querySelector('.scissors'); // scissors select
 
-let rockPaperScissors = document.querySelectorAll('button');
 
-let computerChoice = getComputerChoice();
-
-let playerEmoji = document.querySelector('.playerResult > h2');
-
-let computerEmoji = document.querySelector('.computerResult > h2');
 
 
 
@@ -17,7 +11,7 @@ let winScore = 0;
 let loseScore = 0;
 let drawScore = 0;
 
-
+let rockPaperScissors = document.querySelectorAll('button');
 
 
 
@@ -25,7 +19,13 @@ rockPaperScissors.forEach((button) => {
     button.addEventListener('click', () => {
         
 
+        
 
+        let computerChoice = getComputerChoice();
+        
+        let playerEmoji = document.querySelector('.playerResult > h2');
+        
+        let computerEmoji = document.querySelector('.computerResult > h2');
 
 
         if (button.className === 'rock') {
@@ -254,6 +254,5 @@ function game() {
     //     console.log("It's a tie match")
     // }
 }
-
 
 
