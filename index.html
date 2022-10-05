@@ -8,25 +8,59 @@
 
     <!-- javascript link -->
     <script src="index.js" defer></script>
+
+    <!-- CSS link -->
     <link rel="stylesheet" href="/style.css">
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>hello</h1>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
 
-    <div class="output">
-            Result 
-    </div>  
+    <!-- HEADER -->
+    <header>
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
 
-    <div class="resultOngoing">
-        <span class="yourRealtimeResult">Your score is: 0</span>
-        <span class="computerRealtimeResult">Computer score is: 0</span>
-    </div>
 
-    <div class="finalResult">
+    <!-- MAIN -->
+    <main>
+        <div id="resultMessage">
+            <h2>Choose your weapon</h2>
+            <p>First to score 5 points wins the game </p>
+        </div>
 
-    </div>
+        <div id="resultNumber">
+            <div class="playerResult">
+                <h2>?</h2>
+                <p>You: <span>0</span></p>
+            </div>
+            <div class="computerResult">
+                <h2>?</h2>
+                <p>Computer: <span>0</span></p>
+            </div>
+        </div>
+
+        <div id="chooseYourEmoji">
+            <button class="rock">👊</button>
+            <button class="paper">✋</button>
+            <button class="scissors">✌️</button>  
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Copyright © 2022 Tonny </p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"/>
+    </footer>
+
+    <!-- MODAL -->
+    <dialog id='modal'>
+        <h2 class="popUpMessage">hhhkhkhk</h2>
+        <button class="closePopUp">Play again</button>
+    </dialog>
+
 </body>
 </html>
