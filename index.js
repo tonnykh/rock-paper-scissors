@@ -5,22 +5,64 @@ let btnScissors = document.querySelector('.scissors'); // scissors select
 
 let rockPaperScissors = document.querySelectorAll('button');
 
+let computerChoice = getComputerChoice();
+
+let playerEmoji = document.querySelector('.playerResult > h2');
+
+let computerEmoji = document.querySelector('.computerResult > h2');
+
+
+
 let winScore = 0;
 let loseScore = 0;
 let drawScore = 0;
 
+
+
+
+
 rockPaperScissors.forEach((button) => {
     button.addEventListener('click', () => {
         
-        let output = playRound(button.className, getComputerChoice());
-        console.log(output);
 
-        let messageDisplay = document.querySelector('div');
-        messageDisplay.textContent = output;
 
-        if (output.search("Won!") > -1) {
+
+
+        if (button.className === 'rock') {
+            playerEmoji.textContent = '👊';
+        }   else if (button.className === 'paper') {
+            playerEmoji.textContent = '✋';
+        }   else {
+            playerEmoji.textContent = '✌️';
+        }
+
+
+
+        if (computerChoice === 'ROCK') {
+            computerEmoji.textContent = '👊';
+        }   else if (computerChoice === 'PAPER') {
+            computerEmoji.textContent = '✋';
+        }   else {
+            computerEmoji.textContent = '✌️';
+        }
+        
+
+
+
+
+        let fullMessage = playRound(button.className, computerChoice);
+        console.log(fullMessage);
+
+        let messageDisplayTop = document.querySelector('#resultMessage > h2');
+        messageDisplayTop.textContent = fullMessage.substring(0, fullMessage.indexOf('!') + 1);
+
+        let messageDisplayBottom = document.querySelector('#resultMessage > p');
+        messageDisplayBottom.textContent = fullMessage.substring(fullMessage.indexOf('!') + 1);
+
+
+        if (fullMessage.search("Won!") > -1) {
             winScore++;
-        } else  if (output.search("Lose!") > -1) {
+        } else  if (fullMessage.search("Lose!") > -1) {
             loseScore++;
         } else {
             drawScore++;
@@ -28,28 +70,51 @@ rockPaperScissors.forEach((button) => {
 
         
 
-        
-        let yourScoreDisplay = document.querySelector('.yourRealtimeResult');
-        yourScoreDisplay.textContent = `Your score is: ${winScore} `;
 
-        let computerScoreDisplay = document.querySelector('.computerRealtimeResult');
-        computerScoreDisplay.textContent = `Computer score is: ${loseScore} `;
+        // Display number update
+        let playerNumberDisplay = document.querySelector('.playerResult > p > span');
+        let computerNumberDisplay = document.querySelector('.computerResult > p > span');
+
+        playerNumberDisplay.textContent = winScore;
+        computerNumberDisplay.textContent = loseScore;
+
+        
+        // let yourScoreDisplay = document.querySelector('.yourRealtimeResult');
+        // yourScoreDisplay.textContent = `Your score is: ${winScore} `;
+
+        // let computerScoreDisplay = document.querySelector('.computerRealtimeResult');
+        // computerScoreDisplay.textContent = `Computer score is: ${loseScore} `;
         
 
         
         // console.log(`Your score is ${winScore} `);
         // console.log(`Computer score is ${loseScore} `);
-        let lastMessage;
+        let modalMessage;
         if (winScore === 5 || loseScore === 5) {
             if (winScore > loseScore) {
-                lastMessage = `Hurray!! You WON the game!`;
+                modalMessage = `You WON!👏`;
             } else  {
-                lastMessage = `You LOSE the game! Try again next time.`;
+                modalMessage = `You LOSE!`;
             }
+
+            let popUpMessage = document.querySelector('.popUpMessage');
+            popUpMessage.textContent = modalMessage;
+
+            let modal = document.querySelector('#modal');
+            modal.showModal();
+
+            
         };
 
-        let finalResult = document.querySelector('.finalResult');
-        finalResult.textContent = lastMessage;
+        
+
+
+
+        // let finalResult = document.querySelector('.popUpMessage');
+        // finalResult.textContent = modalMessage;
+
+        // let modal = document.querySelector('#modal');
+
 
 
 
@@ -57,6 +122,15 @@ rockPaperScissors.forEach((button) => {
 });
 
 
+
+// modal close
+    let closePopUp = document.querySelector('.closePopUp');
+    closePopUp.addEventListener('click', () => {
+        modal.close();
+        location.reload();
+
+    });
+    
 
 
 
@@ -82,11 +156,11 @@ rockPaperScissors.forEach((button) => {
 
 // function for computer to return randomly 'rock', 'paper', or 'scissors'.
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3);
+    let computerRandom = Math.floor(Math.random() * 3);
 
-    if (computerChoice === 0) {
+    if (computerRandom === 0) {
         return "ROCK";
-    } else if (computerChoice === 1) {
+    } else if (computerRandom === 1) {
         return "PAPER";
     } else {
         return "SCISSORS";
@@ -104,12 +178,12 @@ function playRound(playerSelection, computerSelection) {
     "You Lose! Paper beats Rock"*/
     console.log('Computer choice:', computerSelection);
 
-    let draw = "Draw! both are same";
+    let tie = `It's a tie! ${playerSelection.toUpperCase()} ties with ${computerSelection}`;
     let win = `You Won! ${playerSelection.toUpperCase()} beats ${computerSelection}`;
     let lose = `You Lose! ${computerSelection} beats ${playerSelection.toUpperCase()}`;
 
     if (playerSelection.toUpperCase() === computerSelection) { //first check whether both are same.
-        return draw; //when both are same the output is "DRAW".
+        return tie; //when both are same the output is "DRAW".
     } else {
         if (playerSelection.toUpperCase() === "ROCK") { //when user is ROCK.
             console.log("You choose Rock");
