@@ -1,4 +1,129 @@
+
 body {
-    background-color:  red;
+    margin: 0;
 }
 
+
+/* || HEADER || */
+header {
+    background-color: #111720;
+    font-family: 'Press Start 2p';
+    color: #DFB14B;
+    text-align: center;
+    padding: 7px;    
+    font-size: larger;
+}
+
+
+/* || MAIN || */
+main {
+    background-color: #222831;
+    color: white;
+    font-family: sans-serif;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+/* result message */
+#resultMessage {
+    text-align: center;
+}
+#resultMessage h2{
+    font-size: xx-large;
+    margin-bottom: 12px;
+}
+#resultMessage p {
+    font-size: x-large;
+    margin-top: 12px;
+}
+/* result number */
+#resultNumber {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 7rem;
+}   
+.playerResult h2, .computerResult h2 {
+    font-size: 6rem;
+    margin: 5px 0 0;
+}
+.playerResult p, .computerResult p {
+    font-size: x-large;
+    font-weight: bold;
+}
+/* choose your emoji */
+#chooseYourEmoji {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 35px;
+    padding-bottom: 100px;
+}
+
+#chooseYourEmoji button {
+    background-color:#393E46;
+    cursor: pointer;
+    font-size: 5rem;
+    border-style: none;
+    border-radius: 10px;
+    padding: 20px 30px;
+}
+
+#chooseYourEmoji button:hover {
+    background-color: #555a63;
+}
+
+
+/* || FOOTER || */
+footer {
+    background-color: #111720;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+footer p {
+    margin: 0;
+    text-align: center;
+    font-size: larger;
+    padding: 20px 12px;
+
+}
+footer img {
+    filter: invert(100%);
+    width: 24px
+}
+
+
+/* || MODAL || */
+#modal {
+    background-color:#222831;
+    text-align: center;
+    padding: 40px;
+    width: 250px;
+    border-radius: 10px;
+    color: white;
+    border-style: none;
+}
+#modal::backdrop {
+    background-color: black;
+    opacity: 0.65;
+}
+
+.closePopUp {
+    background-color: #393E46;
+    border-style: none;
+    border-radius: 10px;
+    font-size: xx-large;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+}
+.closePopUp:hover {
+    background-color: #8b94a1;
+}
+
+.popUpMessage {
+    margin-top: 0px;
+    font-family: sans-serif;
+    font-size: 2.7rem;
+}
